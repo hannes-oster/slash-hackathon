@@ -1,0 +1,257 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Introdutory Modal during first visit -->
+<div class="modal" id="myModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Suspicious Ship-to-Ship transfers</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h6>The Problem:</h6>
+        <p>
+          60% of Russia's GDP is directly tied to natural resources. With the EU
+          declaring sanctions on Russian oil, it attempts to hinder Russia's
+          financing of the invasion of Ukraine. However, ships have been finding
+          ways to avoid the sanctions on the high seas. Tankers coming from
+          Russia, carrying sanctioned Russian oil, meet up with another tanker
+          from a different origin. They then transfer the load of the Russian
+          tanker to the non-Russian one. Since the true origin of natural
+          resources like oil and gas is difficult to track, the other ship can
+          sell Russian oil freely in the EU market. This directly funds the
+          Russian invasion of Ukraine.
+        </p>
+        <center>
+          <img
+            class="img-fluid"
+            src="{{ url_for('static', filename='images/SoS_gif.gif') }}"
+          />
+        </center>
+        <br />
+        <p>
+          Learn more
+          <a
+            target="_blank"
+            href="https://www.youtube.com/watch?v=GcfgFSIj4UM&ab_channel=frontal"
+            >here</a
+          >
+        </p>
+        <br />
+        <h6>The Solution:</h6>
+        <p>
+          We built the SOS (Suspicious Oil Shipments) tracker to facilitate
+          accountability even in the middle of the ocean. Our model scrapes AIS
+          data from 27.500 ships capable of carrying oil or gas, and tracks the
+          last port of origin for them. If this origin is on Russian territory,
+          the ships interactions with other vessels is monitored. If the Russian
+          tanker spends extended periods of time in close proximity to another
+          vessel, it is flagged on our website.
+        </p>
+        <p>
+          If you close this pop-up you can explore our website monitoring
+          suspicous activity between tankers.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rest of homepage content-->
+<div class="col-lg-8 body-container p-3-special py-md-5">
+  <main>
+    <div class="row row-special">
+      <div class="col-md-4 d-none d-md-block">
+        <div class="card">
+          <h5 class="card-header">Featured Boats</h5>
+          <div class="card-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-md-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img
+                      class="img-fluid image-cropper"
+                      src="https://countryflagsapi.com/png/brazil"
+                    />
+                  </div>
+                  <div class="col-md-5">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-md-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-7">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-md-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div id="map"></div>
+      </div>
+
+      <div class="p-4 col-md-4 d-block d-sm-block d-md-none">
+        <div class="card">
+          <h5 class="card-header">Featured Boats</h5>
+          <div class="card-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-7">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-7">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-7">
+                    <h5 class="card-title">Ship Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      05.01.2022 21:10 UTC
+                    </h6>
+                  </div>
+                  <div class="col-5">
+                    <small class="text-end"
+                      >N 49° 12.123<br />E 019° 03.123</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<br /><br />
+
+<!--
+      <h1>Welcome to SuspiciousS2S</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="fs-5">Joins us to uncover a secret love story between EU ships and ships from Russia. (TODO: some fancy text about boats getting close together and exchanging fluids)</p>
+          <br>
+          <p>Learn more in following video:</p>
+        </div>
+
+        <div class="col-md-6">
+          <iframe width="300" height="300" src="https://www.youtube.com/embed/GcfgFSIj4UM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="fs-5 col-md-8"></p>
+  
+
+  
+      <hr class="col-3 col-md-2 mb-5">
+  
+      <div class="row g-5">
+        <div class="col-md-6">
+          <h2>Starter projects</h2>
+          <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to a new GitHub repository.</p>
+          <ul class="icon-list">
+            <li><a href="https://github.com/twbs/bootstrap-npm-starter" rel="noopener" target="_blank">Bootstrap npm starter</a></li>
+            <li class="text-muted">Bootstrap Parcel starter (coming soon!)</li>
+          </ul>
+        </div>
+  
+        <div class="col-md-6">
+          <h2>Guides</h2>
+          <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+          <ul class="icon-list">
+            <li><a href="../getting-started/introduction/">Bootstrap quick start guide</a></li>
+            <li><a href="../getting-started/webpack/">Bootstrap Webpack guide</a></li>
+            <li><a href="../getting-started/parcel/">Bootstrap Parcel guide</a></li>
+            <li><a href="../getting-started/build-tools/">Contributing to Bootstrap</a></li>
+          </ul>
+        </div>
+      </div>-->
+{% endblock %}

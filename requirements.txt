@@ -1,0 +1,13 @@
+Flask==2.0.2
+bs4
+azure-core==1.1.1
+azure-cosmos==4.1.0
+certifi
+chardet
+idna
+requests
+six
+urllib3
+virtualenv
+virtualenv-clone
+tweepy

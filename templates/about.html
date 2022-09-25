@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="parallax" style="background-image: url({{ url_for('static', filename='images/STS_operations_on_suezmax_oil_tanker.jpeg') }});">
+<h2 class="text-center text-white p-5">SOS: Suspicious Oil Ships Tracker</h3>
+</div>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class=" col-lg-6">
+        <h1><b>"Fossil fuel exports are a key 
+          enabler of Russia’s military 
+          buildup and brutal aggression 
+          against Ukraine."</b></h1>
+
+          <br>
+        <p class="">
+          Putin’s War against Ukraine is heavily dependent on sales of fossil exports, including 
+          sea transfers of oil. In the first 100 days, Russia eanred 93 billion euros in revenue. 
+        </p>
+
+        <p class="">
+          As Russian oil is increasingly shipped to more distant markets, more tanker capacity 
+          than ever before is needed. This is a key vulnerability — strong sanctions against 
+          tankers transporting Russian crude would significantly limit the scope for this kind of 
+          rerouting of Russia’s exports. In April-May, 68% of deliveries of Russian crude oil were 
+          made with ships owned by EU, UK and Norwegian companies, with Greek tankers 
+          alone carrying 43%. For deliveries to India and the Middle East, the share was even 
+          higher at 80%. 97% of the tankers were insured in just three countries, UK, Norway and 
+          Sweden.
+        </p>
+    </div>
+      
+    <div class="col-lg-6">
+      <img class="img-fluid" src="{{ url_for('static', filename='images/oil_export_chart.png') }}">
+      <p class="text-end text-muted">Image and Description Source: <a href="https://energyandcleanair.org/publication/russian-fossil-exports-first-100-days">EnergyAndCleanAir.org</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+      <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/GcfgFSIj4UM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Something Strange is going on in the Aegean Sea.</h4>
+
+      <p>Lately, many ships are conducting STS (Ship to Ship Transfers) which are 
+      questionable. Are they transferring Russian oil and skirting the sanctions placed on 
+      Russia to curtail their financing of the invasion of Ukraine? SOS tracker is a platform 
+      that monitors these transfers in order to bring awareness of whether other countries 
+      are violating the sanctions. We want to know if everyone is all in on the sanctions 
+      and willing to help end Putin’s war.</p>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

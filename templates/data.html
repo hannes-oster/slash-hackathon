@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="parallax" style="background-image: url({{ url_for('static', filename='images/boat.jpg') }});">
+  <h2 class="text-center text-white p-5">What Do We Look For In The Data?</h3>
+  </div>
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="img-fluid" src="{{ url_for('static', filename='images/sts-bunkering.png') }}">
+        </div>
+      <div class=" col-lg-6">
+          
+          <p class="">
+            We looked at 28,000 ships and searched for Russian ships. If the Russian ships spend 
+extended time with another ship within s 100 meters, it is suspected that a fossil fuel 
+transfer occurred. Basically, the longer two ships stay side by side, the more likely 
+some type of transfer is happening. 
+          </p>
+      </div>
+        
+      
+  </div>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br><br>
+  <br>
+  <br>
+  <br>
+      {% endblock %}

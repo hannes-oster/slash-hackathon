@@ -1,0 +1,118 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Suspicious S2S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles -->
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+<link href="{{ url_for('static', filename='css/starter-template.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/MarkerCluster.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/MarkerCluster.Default.css') }}" rel="stylesheet">
+</head>
+<html>
+  <nav class="navbar navbar-expand-md navbar-dark bg-main" aria-label="Fourth navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img class="" src="{{ url_for('static', filename='images/SOS_logo.svg') }}" alt="S2S Logo" height="50px"/> 
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+       <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('about')}}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('data')}}">Data</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="{{url_for('community')}}">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+          </li>-->
+          <li><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Tutorial</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block content %} {% endblock %}
+
+<footer class="pt-5 my-5 text-muted border-top text-center">
+      Created by the SuspiciousS2S team at Slash Hackathon - Berlin &copy; 2022
+    </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/leaflet.markercluster.js') }}"></script>
+      <script>
+        var markers = L.markerClusterGroup();
+        var LeafIcon = L.Icon.extend({
+            options: {
+                iconSize:     [22, 60],
+                iconAnchor:   [11, 30],
+                popupAnchor:  [0, -20]
+            }
+        });
+        var shipIcon = new LeafIcon({iconUrl: '{{ url_for('static', filename='images/s2s_marker_60px.png') }}'});
+
+
+
+
+        {% for marker in markers %}
+        var popup = L.popup().setContent("{{ marker['popup']|e }}<a href=\"https://www.marinetraffic.com/en/ais/home/centerx:{{ marker['lon'] }}/centery:{{ marker['lat'] }}/zoom:15\" target=\"_blank\">Explore on MarineTraffic.com</a>");
+        markers.addLayer(L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}], {icon: shipIcon}).bindPopup(popup));
+        //L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
+        //.bindPopup("{{ marker['popup'] }}")
+        //.openPopup();
+        {% endfor %}
+        map.addLayer(markers);
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js">
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            if ($.cookie('pop') == null) {
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+  keyboard: true
+})  ;
+                myModal.show();
+                $.cookie('pop', '1');
+            }
+        });
+        </script>
+    </body>
+  </html>
